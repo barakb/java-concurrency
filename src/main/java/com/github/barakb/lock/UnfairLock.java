@@ -6,6 +6,7 @@ package com.github.barakb.lock;
  *
  * @since 11.0
  */
+@SuppressWarnings("unused")
 public class UnfairLock implements Lock{
     private Thread lockOwner;
 

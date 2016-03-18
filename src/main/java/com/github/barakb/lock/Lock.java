@@ -6,7 +6,10 @@ package com.github.barakb.lock;
  *
  * @since 11.0
  */
+@SuppressWarnings("WeakerAccess")
 public interface Lock {
+    @SuppressWarnings("unused")
     void acquire() throws InterruptedException;
+    @SuppressWarnings("unused")
     void release();
 }

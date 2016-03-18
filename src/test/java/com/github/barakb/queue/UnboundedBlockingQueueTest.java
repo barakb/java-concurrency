@@ -19,7 +19,7 @@ public class UnboundedBlockingQueueTest {
 
     @Before
     public void setUp() throws Exception {
-        blockingQueue = new UnboundedBlockingQueue<Long>();
+        blockingQueue = new UnboundedBlockingQueue<>();
     }
 
     @BeforeClass

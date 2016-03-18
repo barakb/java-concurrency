@@ -9,25 +9,27 @@ import java.util.List;
  *
  * @since 11.0
  */
+@SuppressWarnings({"unused", "WeakerAccess"})
 public class BoundedBlockingQueue<T> implements BlockingQueue<T> {
     private final List<T> values;
     private final int maxSize;
 
-    @SuppressWarnings("unused")
+    @SuppressWarnings({"unused", "WeakerAccess"})
     public BoundedBlockingQueue(int maxSize) {
         this.maxSize = maxSize;
-        values = new ArrayList<T>();
+        values = new ArrayList<>();
     }
 
     public synchronized T get() throws InterruptedException {
         while(values.isEmpty()){
             wait();
         }
+        notifyAll();
         return values.remove(0);
     }
 
     public synchronized void put(T t) throws InterruptedException {
-        while(values.size() <= maxSize){
+        while(maxSize <= values.size()){
             wait();
         }
         values.add(t);

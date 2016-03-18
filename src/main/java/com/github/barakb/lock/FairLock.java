@@ -9,29 +9,31 @@ import java.util.List;
  *
  * @since 11.0
  */
-public class FairLock implements Lock{
+@SuppressWarnings("unused")
+public class FairLock implements Lock {
     private List<Thread> waitingList;
 
     private Thread lockOwner;
 
+    @SuppressWarnings("unused")
     public FairLock() {
-        waitingList = new ArrayList<Thread>();
+        waitingList = new ArrayList<>();
     }
 
     public synchronized void acquire() throws InterruptedException {
         waitingList.add(Thread.currentThread());
 
-        while((lockOwner != null) || (waitingList.get(0) != Thread.currentThread())){
+        while ((lockOwner != null) || (waitingList.get(0) != Thread.currentThread())) {
             wait();
         }
         lockOwner = waitingList.remove(0);
     }
 
     public synchronized void release() {
-        if(lockOwner == Thread.currentThread()){
+        if (lockOwner == Thread.currentThread()) {
             lockOwner = null;
             notifyAll();
-        }else{
+        } else {
             throw new IllegalStateException("try to release lock not owned, thread: " + Thread.currentThread());
         }
 

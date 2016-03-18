@@ -6,7 +6,7 @@ package com.github.barakb.queue;
  *
  * @since 11.0
  */
-public interface BlockingQueue<T> {
+interface BlockingQueue<T> {
     T get() throws InterruptedException;
     void put(T t) throws InterruptedException;
 }

@@ -9,13 +9,14 @@ import java.util.Set;
  *
  * @since 11.0
  */
+@SuppressWarnings("unused")
 public class UnfairRWLock implements RWLock {
     private Set<Thread> owners;
     private int readers;
     private int writers;
 
     public UnfairRWLock() {
-        owners = new HashSet<Thread>();
+        owners = new HashSet<>();
     }
 
     public synchronized void acquireRead() throws InterruptedException {

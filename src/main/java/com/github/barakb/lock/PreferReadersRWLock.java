@@ -1,14 +1,12 @@
 package com.github.barakb.lock;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * Created by Barak Bar Orion
  * on 3/18/16.
  *
  * @since 11.0
  */
+@SuppressWarnings("unused")
 public class PreferReadersRWLock implements RWLock {
 
     public synchronized void acquireRead() throws InterruptedException {

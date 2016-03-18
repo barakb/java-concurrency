@@ -9,15 +9,16 @@ import java.util.List;
  *
  * @since 11.0
  */
+@SuppressWarnings("WeakerAccess")
 public class UnboundedBlockingQueue<T> implements BlockingQueue<T> {
     private final List<T> values;
 
     public UnboundedBlockingQueue() {
-        values = new ArrayList<T>();
+        values = new ArrayList<>();
     }
 
     public synchronized T get() throws InterruptedException {
-        while(values.isEmpty()){
+        while (values.isEmpty()) {
             wait();
         }
         return values.remove(0);
