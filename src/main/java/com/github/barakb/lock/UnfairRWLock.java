@@ -40,7 +40,7 @@ public class UnfairRWLock implements RWLock {
         if(!owners.remove(Thread.currentThread())){
             throw new IllegalStateException("try to release unfair lock by thread that does not own the lock" + Thread.currentThread());
         }
-        readers = -1;
+        readers -= 1;
         notifyAll();
     }
 
@@ -48,7 +48,7 @@ public class UnfairRWLock implements RWLock {
         if(!owners.remove(Thread.currentThread())){
             throw new IllegalStateException("try to release unfair lock by thread that does not own the lock" + Thread.currentThread());
         }
-        writers = -1;
+        writers -= 1;
         notifyAll();
     }
 }
